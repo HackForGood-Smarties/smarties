@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Elder Profile</title>
+  <style>
+    body { margin:0; font-family:Arial; background:#f8fafc; }
+    .app { max-width:520px; min-height:100vh; margin:auto; background:white; padding:24px; }
+    .topbar { font-size:24px; font-weight:800; margin-bottom:24px; color:#e0001b; }
+    .card { background:white; border-radius:22px; padding:24px; box-shadow:0 4px 14px #ddd; }
+    label { display:block; font-weight:bold; margin-top:14px; }
+    input, select { width:100%; padding:15px; border-radius:14px; border:1px solid #ccc; margin-top:8px; box-sizing:border-box; }
+    button { width:100%; border:none; background:#c70019; color:white; padding:18px; border-radius:16px; font-size:18px; font-weight:800; margin-top:20px; cursor:pointer; }
+    p { color:#64748b; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">♥ CareSync</div>
+
+    <div class="card">
+      <h2>Elder Profile</h2>
+      <p>Fill in basic information so CareSync can recommend suitable caregivers.</p>
+
+      <label>Elder Name</label>
+      <input id="elderName" placeholder="Auntie Lim">
+
+      <label>Age</label>
+      <input placeholder="78">
+
+      <label>Preferred Language</label>
+      <select>
+        <option>Mandarin</option>
+        <option>English</option>
+        <option>Malay</option>
+        <option>Tamil</option>
+        <option>Dialect</option>
+      </select>
+
+      <label>Location</label>
+      <input placeholder="Tampines">
+
+      <label>Living Arrangement</label>
+      <select>
+        <option>Lives alone</option>
+        <option>Lives with family</option>
+        <option>Nursing home</option>
+      </select>
+
+      <button onclick="saveProfile()">Save Profile & Continue</button>
+    </div>
+  </div>
+
+  <script>
+    function saveProfile() {
+      const name = document.getElementById("elderName").value || "Auntie Lim";
+      localStorage.setItem("elderName", name);
+      window.location.href = "needs.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Itinerary</title>
+  <style>
+    body { margin:0; font-family:Arial; background:#f8fafc; }
+    .app { max-width:520px; min-height:100vh; margin:auto; background:white; padding:24px; }
+    .topbar { font-size:24px; font-weight:800; margin-bottom:24px; color:#e0001b; }
+    .card { background:white; border-radius:22px; padding:24px; box-shadow:0 4px 14px #ddd; margin-bottom:18px; }
+    .mini { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .box { background:#f8fafc; padding:16px; border-radius:16px; }
+    .timeline { border-left:3px solid #e0001b; padding-left:18px; margin-top:20px; }
+    .item { margin-bottom:18px; }
+    .time { color:#e0001b; font-weight:bold; }
+    button, a { width:100%; box-sizing:border-box; display:block; text-align:center; text-decoration:none; border:none; background:#c70019; color:white; padding:16px; border-radius:14px; font-weight:800; margin-top:14px; cursor:pointer; }
+    .secondary { background:white; color:#374151; border:1px solid #d1d5db; }
+    p { color:#64748b; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">♥ CareSync</div>
+
+    <div class="card">
+      <h2>Care Itinerary</h2>
+      <p>A structured plan for the caregiver booking.</p>
+
+      <div class="mini">
+        <div class="box"><p>Elder</p><h3 id="elderName">Auntie Lim</h3></div>
+        <div class="box"><p>Caregiver</p><h3 id="caregiver">Sarah Tan</h3></div>
+        <div class="box"><p>Time</p><h3>10 AM - 11 AM</h3></div>
+        <div class="box"><p>Support</p><h3>Wheelchair</h3></div>
+      </div>
+
+      <div class="timeline">
+        <div class="item"><div class="time">10:00 - 10:05</div>Caregiver arrives and checks in.</div>
+        <div class="item"><div class="time">10:05 - 10:15</div>Greet elder and confirm comfort level.</div>
+        <div class="item"><div class="time">10:15 - 10:25</div>Assist elder with wheelchair movement.</div>
+        <div class="item"><div class="time">10:25 - 10:35</div>Support medication reminder.</div>
+        <div class="item"><div class="time">10:35 - 10:50</div>Companionship and light conversation.</div>
+        <div class="item"><div class="time">10:55 - 11:00</div>Submit visit notes.</div>
+      </div>
+
+      <a class="secondary" href="tel:+6582058578">📞 Call Elder</a>
+
+      <button onclick="window.open('https://n8ngc.codeblazar.org/webhook/29bb9676-d4ac-4d88-b2a7-e747bc6d4b77/chat', '_blank')">
+        💬 CareSync Chat
+      </button>
+
+      <button onclick="window.location.href='dashboard.html'">Confirm Booking & Go Dashboard</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("elderName").innerText = localStorage.getItem("elderName") || "Auntie Lim";
+    document.getElementById("caregiver").innerText = localStorage.getItem("selectedCaregiver") || "Sarah Tan";
+  </script>
+</body>
+</html>

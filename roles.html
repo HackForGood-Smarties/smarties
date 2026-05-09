@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choose Role</title>
+  <style>
+    body { margin:0; font-family:Arial; background:#f8fafc; }
+    .app { max-width:520px; min-height:100vh; margin:auto; background:white; padding:24px; }
+    .topbar { font-size:24px; font-weight:800; margin-bottom:30px; color:#e0001b; }
+    h1 { font-size:36px; }
+    p { color:#64748b; line-height:1.5; }
+    .role-card { background:white; border:1px solid #e5e7eb; border-radius:20px; padding:24px; margin-bottom:20px; box-shadow:0 4px 12px #ddd; cursor:pointer; }
+    .role-card h3 { margin:0 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">♥ CareSync</div>
+
+    <h1>Welcome 👋</h1>
+    <p>How will you be using CareSync today?</p>
+
+    <div class="role-card" onclick="go('profile.html')">
+      <h3>👥 Family / Caregiver</h3>
+      <p>I am caring for an elderly family member.</p>
+    </div>
+
+    <div class="role-card" onclick="go('dashboard.html')">
+      <h3>🏢 Community Centre Staff</h3>
+      <p>I manage care requests, volunteers and bookings.</p>
+    </div>
+
+    <div class="role-card" onclick="go('dashboard.html')">
+      <h3>🤝 Volunteer / Staff</h3>
+      <p>I assist elderly residents with appointments.</p>
+    </div>
+  </div>
+
+  <script>
+    function go(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

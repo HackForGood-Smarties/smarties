@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body { margin:0; font-family:Arial; background:#f8fafc; }
+    .app { max-width:520px; min-height:100vh; margin:auto; background:white; padding:24px; }
+    .topbar { font-size:24px; font-weight:800; margin-bottom:24px; color:#e0001b; }
+    .card { background:white; border-radius:22px; padding:24px; box-shadow:0 4px 14px #ddd; margin-bottom:18px; }
+    .success { background:#ecfdf5; color:#166534; border:1px solid #bbf7d0; border-radius:18px; padding:16px; margin-bottom:18px; }
+    .progress { background:#fff7ed; color:#9a3412; border:1px solid #fed7aa; border-radius:18px; padding:16px; margin-bottom:18px; }
+    .stats { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+    .stat { background:#f8fafc; border-radius:18px; padding:18px; }
+    .stat h3 { font-size:30px; margin:0; }
+    textarea { width:100%; min-height:120px; border-radius:14px; padding:15px; box-sizing:border-box; }
+    button { width:100%; border:none; background:#c70019; color:white; padding:16px; border-radius:14px; font-weight:800; margin-top:14px; cursor:pointer; }
+    .ai-box { background:#eff6ff; color:#1e3a8a; border-radius:16px; padding:16px; margin-top:14px; }
+    p { color:#64748b; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">♥ CareSync</div>
+
+    <h2>CareSync Dashboard</h2>
+    <p>Overview for families, staff, and care coordinators.</p>
+
+    <div class="success">✅ Booking confirmed. Sarah Tan has been assigned for 10:00 AM - 11:00 AM.</div>
+    <div class="progress" id="liveStatus">⏳ Live status: Waiting for caregiver check-in.</div>
+
+    <div class="stats">
+      <div class="stat"><p>Total Elders</p><h3>24</h3></div>
+      <div class="stat"><p>Pending Requests</p><h3>6</h3></div>
+      <div class="stat"><p>Confirmed Visits</p><h3>12</h3></div>
+      <div class="stat"><p>High Risk</p><h3 style="color:#dc2626;">3</h3></div>
+    </div>
+
+    <div class="card">
+      <h2>Visit Notes & AI Summary</h2>
+      <textarea id="notes" placeholder="Example: Auntie Lim took her medication but seemed tired."></textarea>
+      <button onclick="generateSummary()">Generate AI Summary</button>
+
+      <div class="ai-box" id="summary"><b>AI Summary:</b> Waiting for caregiver visit notes.</div>
+      <div class="ai-box" id="risk" style="background:#dcfce7;color:#15803d;"><b>Risk Level:</b> Not assessed yet</div>
+
+      <button onclick="startVisit()">Start Visit</button>
+      <button onclick="completeVisit()">Complete Visit</button>
+    </div>
+  </div>
+
+  <script>
+    function startVisit() {
+      document.getElementById("liveStatus").innerHTML = "🟠 Live status: Caregiver has checked in and visit is ongoing.";
+    }
+
+    function completeVisit() {
+      document.getElementById("liveStatus").innerHTML = "✅ Live status: Visit completed. Family and coordinator updated.";
+    }
+
+    function generateSummary() {
+      const notes = document.getElementById("notes").value.toLowerCase();
+      const summary = document.getElementById("summary");
+      const risk = document.getElementById("risk");
+
+      if (!notes) {
+        alert("Please enter visit notes first.");
+        return;
+      }
+
+      summary.innerHTML = `
+        <b>AI Summary:</b><br><br>
+        The caregiver submitted the following note: "${notes}".<br><br>
+        Suggested follow-up: Continue monitoring the elder during the next visit.
+      `;
+
+      if (notes.includes("fall") || notes.includes("pain") || notes.includes("dizzy")) {
+        risk.innerHTML = "<b>Risk Level:</b> High";
+        risk.style.background = "#fee2e2";
+        risk.style.color = "#b91c1c";
+      } else if (notes.includes("tired") || notes.includes("low appetite") || notes.includes("medication")) {
+        risk.innerHTML = "<b>Risk Level:</b> Medium";
+        risk.style.background = "#fef3c7";
+        risk.style.color = "#92400e";
+      } else {
+        risk.innerHTML = "<b>Risk Level:</b> Low";
+        risk.style.background = "#dcfce7";
+        risk.style.color = "#15803d";
+      }
+    }
+  </script>
+</body>
+</html>
+
+<!-- commmit -->

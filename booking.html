@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking</title>
+  <style>
+    body { margin:0; font-family:Arial; background:#f8fafc; }
+    .app { max-width:520px; min-height:100vh; margin:auto; background:white; padding:24px; }
+    .topbar { font-size:24px; font-weight:800; margin-bottom:24px; color:#e0001b; }
+    .card { background:white; border-radius:22px; padding:24px; box-shadow:0 4px 14px #ddd; }
+    label { display:block; font-weight:bold; margin-top:14px; }
+    input, select { width:100%; padding:15px; border-radius:14px; border:1px solid #ccc; margin-top:8px; box-sizing:border-box; }
+    button { width:100%; border:none; background:#c70019; color:white; padding:18px; border-radius:16px; font-size:18px; font-weight:800; margin-top:20px; cursor:pointer; }
+    p { color:#64748b; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">♥ CareSync</div>
+
+    <div class="card">
+      <h2>Booking Details</h2>
+      <p>Choose the timing and requirements.</p>
+
+      <label>Date</label>
+      <input placeholder="10 May 2026">
+
+      <label>Start Time</label>
+      <input placeholder="10:00 AM">
+
+      <label>Duration</label>
+      <select>
+        <option>1 hour</option>
+        <option>2 hours</option>
+        <option>Half day</option>
+      </select>
+
+      <label>Preferred Caregiver Gender</label>
+      <select>
+        <option>No preference</option>
+        <option>Female</option>
+        <option>Male</option>
+      </select>
+
+      <label>Transport Required?</label>
+      <select>
+        <option>Yes, wheelchair transport needed</option>
+        <option>Yes, normal transport needed</option>
+        <option>No transport needed</option>
+      </select>
+
+      <button onclick="window.location.href='match.html'">Find Caregiver</button>
+    </div>
+  </div>
+</body>
+</html>
